@@ -28,7 +28,7 @@ static	int	count_words(char const *s, char c)
 	return (count);
 }
 
-void	*free_all(char **strings, int j)
+static void	*free_all(char **strings, int j)
 {
 	while (j >= 0)
 	{
@@ -39,7 +39,7 @@ void	*free_all(char **strings, int j)
 	return (NULL);
 }
 
-char	**assemble(char **strings, char const *s, char c, int word_count)
+static char	**assemble(char **strings, char const *s, char c, int word_count)
 {
 	int	j;
 	int	i;
