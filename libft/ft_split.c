@@ -28,32 +28,6 @@ static	int	count_words(char const *s, char c)
 	return (count);
 }
 
-static	char	*get_word(char const *s, int start, char c, int index)
-{
-	char	*word;
-	int		end;
-	int		i;
-
-	i = 0;
-	end = start;
-	if (s[index] == '\0')
-		end = index;
-	else
-	{
-		while (s[end] != c)
-			end++;
-	}
-	word = (char *)malloc((end - start) + 1);
-	if (!word)
-		return (NULL);
-	while (start < end)
-	{
-		word[i++] = s[start++];
-	}
-	word[i] = '\0';
-	return (word);
-}
-
 void	*free_all(char **strings, int j)
 {
 	while (j >= 0)
@@ -65,28 +39,27 @@ void	*free_all(char **strings, int j)
 	return (NULL);
 }
 
-char	**assemble(char **strings, char const *s, char c)
+char	**assemble(char **strings, char const *s, char c, int word_count)
 {
 	int	j;
 	int	i;
 	int	start;
+	int	end;
 
 	j = 0;
 	i = 0;
-	start = -1;
-	while (s[i] || start >= 0)
+	while (j < word_count)
 	{
-		if (s[i] != c && (i == 0 || s[i - 1] == c))
-			start = i;
-		else if (start >= 0 && (s[i] == c || !(s[i])))
-		{
-			strings[j++] = get_word(s, start, c, i);
-			start = -1;
-			if (!(strings[j - 1]))
-				return (free_all(strings, j - 1));
-		}
-		if (s[i])
+		while (s[i] == c)
 			i++;
+		start = i;
+		while (s[i] != c && s[i])
+			i++;
+		end = i;
+		strings[j++] = ft_substr(s, start, (end - start));
+		if (strings[j - 1] == NULL)
+			return (free_all(strings, j - 1));
+		i++;
 	}
 	strings[j] = NULL;
 	return (strings);
@@ -95,11 +68,14 @@ char	**assemble(char **strings, char const *s, char c)
 char	**ft_split(char const *s, char c)
 {
 	char	**strings;
+	int		word_count;
 
 	if (!s)
 		return (NULL);
-	strings = (char **)malloc(sizeof(char *) * (count_words(s, c) + 1));
+	word_count = count_words(s, c);
+	strings = (char **)malloc(sizeof(char *) * (word_count + 1));
 	if (!strings)
 		return (NULL);
-	return (assemble(strings, s, c));
+	return (assemble(strings, s, c, word_count));
 }
+
