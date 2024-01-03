@@ -26,12 +26,12 @@ static int	whitespace(char c)
 	return (0);
 }
 
-int	ft_atoi(const char *str)
+long	ft_atoi(const char *str)
 {
 	int		i;
 	long	num;
 	long	prev;
-	int		sign;
+	long		sign;
 
 	num = 0;
 	i = 0;
