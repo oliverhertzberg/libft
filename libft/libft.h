@@ -15,6 +15,11 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdarg.h>
+# include <limits.h>
+
+# define HEX_UPPER "0123456789ABCDEF"
+# define HEX_LOWER "0123456789abcdef"
 
 typedef struct s_list
 {
@@ -22,7 +27,7 @@ typedef struct s_list
 	struct s_list	*next;
 }	t_list;
 
-int		ft_atoi(const char *str);
+long	ft_atoi(const char *str);
 void	ft_bzero(void *s, size_t n);
 void	*ft_calloc(size_t count, size_t size);
 int		ft_isalnum(int c);
@@ -56,6 +61,9 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 char	*ft_strtrim(char const *s1, char const *set);
+int	count_words(char const *s, char c);
+
+// linked list functions
 t_list	*ft_lstnew(void *content);
 void	ft_lstadd_front(t_list **lst, t_list *new);
 int		ft_lstsize(t_list *lst);
@@ -65,5 +73,15 @@ void	ft_lstdelone(t_list *lst, void (*del)(void*));
 void	ft_lstclear(t_list **lst, void (*del)(void*));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+
+// printf
+int	ft_printf(const char *str, ...);
+int	ft_printstr(char *str);
+int	ft_printhex(unsigned long int num, char c);
+int	ft_count_num(long int num);
+int	ft_count_hex(unsigned long int num);
+int	ft_printint(int num);
+int	ft_printptr(unsigned long int num);
+int	ft_printuint(unsigned int num);
 
 #endif
