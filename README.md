@@ -27,7 +27,7 @@ A minimal implementation of a singly linked list:
 - `ft_lstnew`, `ft_lstadd_front`, `ft_lstadd_back`, `ft_lstsize`, `ft_lstlast`
 - `ft_lstdelone`, `ft_lstclear`, `ft_lstiter`, `ft_lstmap`
 
-### 🖨️ Bonus – printf Clone
+### 🖨️ printf Clone
 A simplified version of `printf`:
 - `ft_printf`, with support for `%c`, `%s`, `%d`, `%i`, `%u`, `%x`, `%X`, `%p`
 
