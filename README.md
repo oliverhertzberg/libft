@@ -1,6 +1,6 @@
 # Libft
 
-Libft is a custom implementation of the standard C library, developed as a foundational project at [42 Network](https://www.42.fr/). It consists of a comprehensive set of C functions for memory handling, string manipulation, character checking, linked list operations, and a basic version of `printf`.
+Libft is a custom implementation of the standard C library, developed as a foundational project at Hive Helsinki (https://www.hive.fi/en/). It consists of a comprehensive set of C functions for memory handling, string manipulation, character checking, linked list operations, and a basic version of `printf`.
 
 ## 📚 Description
 
